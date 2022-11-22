@@ -4,9 +4,19 @@ import useEth from "../../contexts/EthContext/useEth";
 function VotingSessionBtns({owner, status, setStatus}) {
   const { state: { contract, accounts } } = useEth();
   const [inputValue, setInputValue] = useState("");
+  const [isRegisteredVoter, setIsRegisteredVoter] = useState(false);
 
   const handleInputChange = e => {
     setInputValue(e.target.value);
+  };  
+
+  const start = async () => {
+    const Voter = await contract.methods.getVoter(accounts[0]).call({ from: accounts[0] });
+    setIsRegisteredVoter(Voter.isRegistered);
+    if (!Voter.isRegistered) {
+      alert("You are not a registered Voter.");
+      return;
+    }
   };
 
   const vote = async e => {
@@ -15,6 +25,12 @@ function VotingSessionBtns({owner, status, setStatus}) {
     }
     if (inputValue === "") {
       alert("Please enter an id.");
+      return;
+    }
+    const Voter = await contract.methods.getVoter(accounts[0]).call({ from: accounts[0] });
+    setIsRegisteredVoter(Voter.isRegistered);
+    if (!Voter.isRegistered) {
+      alert("You are not a registered Voter.");
       return;
     }
     await contract.methods.vote(inputValue).send({ from: accounts[0] });
@@ -32,9 +48,15 @@ function VotingSessionBtns({owner, status, setStatus}) {
         owner === accounts[0] && status === "ProposalsRegistrationEnded" ? <button onClick={nextPhase}> nextPhase </button> :
           <></>
       }
-
+      
       {
-        status === "VotingSessionStarted" ?
+        status === "VotingSessionStarted" ? 
+          <button onClick={start}> Start </button> :
+            <></>
+      }
+      
+      {
+        status === "VotingSessionStarted" && isRegisteredVoter ?
         <div onClick={vote} className="input-btn">
           vote
           <input

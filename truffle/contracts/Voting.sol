@@ -161,6 +161,15 @@ contract Voting is Ownable {
     }
 
     /**
+    * @notice After the {RegisteringVoters} phase, allows the Owner to get a Voter.
+    * @param _addr the address of the Voter to get.
+    **/
+    function getVoter(address _addr) external view returns(Voter memory) {
+        require (status != WorkflowStatus.RegisteringVoters, "The current status does not allow this operation");
+        return voters[_addr];
+    }
+
+    /**
      * @notice During the {ProposalsRegistrationStarted} phase, allows a registered Voter to register a Proposal.
      * @param _description the description of the proposal to register. 
     **/
