@@ -7,9 +7,8 @@
   font-size: 1.6rem;
   --primary-color: #1266cc;
   --secondary-color: #f96400;
-  --flash-color: rgb(89, 255, 0);
-  --gray: #999;
-  --light-gray: #e0e0e0;
+  --gray: rgb(26, 25, 25);
+  --light-gray: #1c1c1c;
   --dark-gray: #777;
 }
 
@@ -43,10 +42,6 @@ code span.secondary-color {
 
 code span.dim-color {
   color: var(--gray);
-}
-
-code span.flash {
-  background-color: var(--flash-color);
 }
 
 details {

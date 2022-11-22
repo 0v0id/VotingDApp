@@ -193,6 +193,13 @@ contract Voting is Ownable {
     }
 
     /**
+    * @notice During the {VotingSessionStarted} phase, allows a Voter to get the proposals.
+    **/
+    function getProposals() external  onlyStatus(WorkflowStatus.VotingSessionStarted) onlyRegisteredVoters view returns(Proposal[] memory) {
+        return proposals;
+    }
+
+    /**
      * @notice During the {VotingSessionStarted} phase, allows a registered Voter to vote for any registered Proposal.
      * Proposals are identified by a unique _id.
      * @param _id the id of the proposal to vote for.
@@ -319,32 +326,5 @@ contract Voting is Ownable {
     **/
     function getWinner() external view onlyStatus(WorkflowStatus.VotesTallied) returns(uint8) {
         return winningProposalId;
-    }
-
-
-
-    /** A SUPPRIMER **/
-    
-    /**
-     * During the {VotingSessionStarted} phase, allows anybody to see the details of each Proposal.
-    **/
-    function getProposalsDetails() external view onlyStatus(WorkflowStatus.VotingSessionStarted) returns(string memory) {
-        string memory str = "";
-        string memory str1 = "";
-        string memory str2 = "";
-        string memory str3 = "";
-        string memory str4 = "";
-        string memory str5 = "";
-        string memory str6 = "";
-        for (uint8 _id=0; _id<proposals.length; _id++) {
-            str1 = " Id: \n";
-            str2 = Strings.toString(_id);
-            str3 = " \nDescription: \n";
-            str4 = proposals[_id].description;
-            str5 = " \nNumbers of votes: ";
-            str6 = Strings.toString(proposals[_id].voteCount);
-            str = string(bytes.concat(bytes(str), bytes(str1), bytes(str2), bytes(str3), bytes(str4), bytes(str5), bytes(str6)));
-        }
-        return str;
     }
 }

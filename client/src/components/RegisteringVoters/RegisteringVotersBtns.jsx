@@ -34,7 +34,7 @@ function RegisteringVotersBtns({setStatus}) {
     <div className="btns-container">
       <div className="btns">
         <div onClick={registerVoter} className="input-btn">
-          registerVoter
+          Register a voter &nbsp;
           <input
             type="text"
             placeholder="address"
@@ -44,7 +44,7 @@ function RegisteringVotersBtns({setStatus}) {
         </div>
 
         <button onClick={nextPhase}>
-          nextPhase
+          Launch proposals registration phase
         </button>
       </div>
     </div>

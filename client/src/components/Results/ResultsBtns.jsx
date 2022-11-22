@@ -11,7 +11,7 @@ function ResultsBtns({owner, status, setStatus}) {
     const stat = await contract.methods.getStatus().call({ from: accounts[0] });
     setStatus(stat);
 
-    if (stat == "VotingSessionStarted") {
+    if (stat === "VotingSessionStarted") {
       // This is a tie. Thus a new voting session begins !
       alert("This is a tie. A new voting session begins, with the tied prososals only.");
       return;

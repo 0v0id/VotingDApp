@@ -1,5 +1,5 @@
 function Title() {
-  return <h2>RegisteringVoters phase</h2>;
+  return <h2>Voters Registration</h2>;
 }
 
 export default Title;

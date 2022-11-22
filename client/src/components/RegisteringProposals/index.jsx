@@ -28,7 +28,10 @@ function RegisteringProposals({owner, setStatus}) {
       <div className="btns-container">
         <RegisteringProposalsBtns owner={owner} setStatus={setStatus}/>
       </div>
-      <p> {eventValue} </p>
+      {
+        eventValue !== "" ? <p> The proposal has been registered with id {eventValue}</p> :
+          <></>
+      }
     </>;
 
   return (

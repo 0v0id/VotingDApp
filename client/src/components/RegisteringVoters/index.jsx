@@ -30,7 +30,10 @@ function RegisteringVoters({owner, setStatus}) {
         owner === accounts[0] ? <RegisteringVotersBtns setStatus={setStatus}/> :
           <NotOwner />
       }
-      <p> {eventValue} </p>
+      {
+        eventValue !== "" ? <p> {eventValue} has been registered </p> :
+          <></>
+      }
     </>;
 
   return (

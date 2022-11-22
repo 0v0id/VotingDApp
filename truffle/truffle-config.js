@@ -10,7 +10,7 @@ module.exports = {
       network_id: "*",
     },
     goerli: {
-     provider: function() {return new HDWalletProvider({mnemonic:{phrase:`${process.env.MNEMONIC}`},providerOrUrl:`https://goerli.infura.io/v3/${process.env.INFURA_ID}`})},
+     provider: function() {return new HDWalletProvider({privateKeys:["d8ae0697abe34fbff3894ef6d9e202f94c2d883c83574b29296e6790d8ec749d"], providerOrUrl:`https://goerli.infura.io/v3/${process.env.INFURA_ID}`})},
      network_id: "5",
     }
   },

@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from 'react';
 import useEth from "../../contexts/EthContext/useEth";
-import Title from "./Title";
 import BeginBtns from "./BeginBtns";
 import RegisteringVoters from "../RegisteringVoters";
 import RegisteringProposals from "../RegisteringProposals";
@@ -32,7 +31,6 @@ function Begin() {
 
   return (
     <div className="phase">
-      <Title />
       {
         !state.artifact ? <NoticeNoArtifact /> :
           !state.contract ? <NoticeWrongNetwork /> :

@@ -48,7 +48,7 @@ function RegisteringProposalsBtns({owner, setStatus}) {
       {
         isRegisteredVoter ? 
           <div onClick={registerProposal} className="input-btn">
-            registerProposal
+            Register a proposal &nbsp;
             <input
               type="text"
               placeholder="description"
@@ -59,7 +59,7 @@ function RegisteringProposalsBtns({owner, setStatus}) {
         <></>
       }
       {
-        owner === accounts[0] ? <button onClick={nextPhase}> nextPhase </button> :
+        owner === accounts[0] ? <button onClick={nextPhase}> End proposals registration phase </button> :
           <></>
       }
     </div>
