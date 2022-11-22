@@ -24833,6 +24833,12 @@
     "version": "0.8.14+commit.80d49f37.Emscripten.clang"
   },
   "networks": {
+    "5": {
+      "events": {},
+      "links": {},
+      "address": "0x096fA76028fE7aC8367C1730F2D3d8f2466CCC4E",
+      "transactionHash": "0x67a55840b9804a3cbbd068b80ca8e44980521920ad257c0ac6134440a27fbb0b"
+    },
     "1669040137703": {
       "events": {
         "0x8be0079c531659141344cd1fd0a4f28419497f9722a3daafe3b4186f6b6457e0": {
@@ -24931,7 +24937,7 @@
     }
   },
   "schemaVersion": "3.4.10",
-  "updatedAt": "2022-11-22T16:46:19.846Z",
+  "updatedAt": "2022-11-22T17:57:03.828Z",
   "networkType": "ethereum",
   "devdoc": {
     "author": "Maxence Guillemain d'Echon",
