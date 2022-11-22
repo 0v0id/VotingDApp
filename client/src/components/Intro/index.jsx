@@ -4,6 +4,7 @@ function Intro() {
   return (
     <>
       <Welcome />
+      <hr />
     </>
   );
 }

@@ -1,7 +1,7 @@
-import { useState } from "react";
+import React, { useState } from 'react';
 import useEth from "../../contexts/EthContext/useEth";
 
-function VotingSessionBtns() {
+function VotingSessionBtns({status, setStatus}) {
   const { state: { contract, accounts } } = useEth();
   const [inputValue, setInputValue] = useState("");
 
@@ -22,7 +22,8 @@ function VotingSessionBtns() {
 
   const nextPhase = async () => {
     await contract.methods.nextPhase().send({ from: accounts[0] });
-    const status = await contract.methods.getStatus().call({ from: accounts[0] });
+    const stat = await contract.methods.getStatus().call({ from: accounts[0] });
+    setStatus(stat);
   };
 
   return (

@@ -1,17 +1,17 @@
-import { useState } from "react";
+import React, { useState } from 'react';
 import useEth from "../../contexts/EthContext/useEth";
 import Title from "./Title";
 import RegisteringVotersBtns from "./RegisteringVotersBtns";
 import NoticeNoArtifact from "./NoticeNoArtifact";
 import NoticeWrongNetwork from "./NoticeWrongNetwork";
 
-function RegisteringVoters() {
+function RegisteringVoters({status, setStatus}) {
   const { state } = useEth();
 
   const registeringVoters =
     <>
       <div className="btns-container">
-        <RegisteringVotersBtns />
+        <RegisteringVotersBtns status={status} setStatus={setStatus}/>
       </div>
     </>;
 
@@ -23,6 +23,7 @@ function RegisteringVoters() {
           !state.contract ? <NoticeWrongNetwork /> :
             registeringVoters
       }
+      <hr />
     </div>
   );
 }
