@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import useEth from "../../contexts/EthContext/useEth";
 import Title from "./Title";
 import BeginBtns from "./BeginBtns";
@@ -13,6 +13,10 @@ function Begin() {
   const { state } = useEth();
   const [status, setStatus] = useState("");
   const [owner, setOwner] = useState("");
+
+  useEffect(() => {
+    document.title = `Voting : ${status}`;
+  });
 
   const begin =
     <>

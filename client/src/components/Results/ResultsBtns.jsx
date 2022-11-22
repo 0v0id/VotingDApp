@@ -8,10 +8,18 @@ function ResultsBtns({owner, status, setStatus}) {
 
   const tally = async () => {
     await contract.methods.nextPhase().send({ from: accounts[0] });
-    const winId = await contract.methods.getWinner().call({ from: accounts[0] });
-    setWinnindId(winId);
     const stat = await contract.methods.getStatus().call({ from: accounts[0] });
     setStatus(stat);
+
+    if (stat == "VotingSessionStarted") {
+      // This is a tie. Thus a new voting session begins !
+      alert("This is a tie. A new voting session begins, with the tied prososals only.");
+      return;
+    }
+    else {
+      const winId = await contract.methods.getWinner().call({ from: accounts[0] });
+      setWinnindId(winId);
+    }
   };
 
   const displayWinner = async () => {

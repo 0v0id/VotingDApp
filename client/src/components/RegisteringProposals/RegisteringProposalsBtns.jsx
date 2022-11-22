@@ -44,11 +44,7 @@ function RegisteringProposalsBtns({owner, setStatus}) {
 
   return (
     <div className="btns">
-
-      {
-        <button onClick={start}> Start </button>
-      }
-
+      <button onClick={start}> Start </button>
       {
         isRegisteredVoter ? 
           <div onClick={registerProposal} className="input-btn">
@@ -62,7 +58,6 @@ function RegisteringProposalsBtns({owner, setStatus}) {
           </div> :
         <></>
       }
-
       {
         owner === accounts[0] ? <button onClick={nextPhase}> nextPhase </button> :
           <></>

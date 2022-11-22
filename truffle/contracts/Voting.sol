@@ -73,7 +73,7 @@ contract Voting is Ownable {
     event VoterRegistered(address voterAddress); 
     event WorkflowStatusChange(WorkflowStatus previousStatus, WorkflowStatus nextStatus);
     event ProposalRegistered(uint8 proposalId);
-    event Voted(address voter, uint8 proposalId);
+    event Voted(address voterAddress, uint8 proposalId);
     event Tie();
 
     /** DEFAULT FUNCTIONS **/
