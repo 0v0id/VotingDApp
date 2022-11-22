@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import useEth from "../../contexts/EthContext/useEth";
 
-function RegisteringProposalsBtns({status, setStatus}) {
+function RegisteringProposalsBtns({owner, setStatus}) {
   const { state: { contract, accounts } } = useEth();
   const [inputValue, setInputValue] = useState("");
 
@@ -38,9 +38,10 @@ function RegisteringProposalsBtns({status, setStatus}) {
         />
       </div>
 
-      <button onClick={nextPhase}>
-        nextPhase
-      </button>
+      {
+        owner === accounts[0] ? <button onClick={nextPhase}> nextPhase </button> :
+          <></>
+      }
     </div>
   );
 }

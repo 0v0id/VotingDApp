@@ -1,21 +1,23 @@
-import { useState } from "react";
 import useEth from "../../contexts/EthContext/useEth";
 
-function BeginBtns({status, setStatus}) {
+function BeginBtns({setOwner, setStatus}) {
   const { state: { contract, accounts } } = useEth();
 
   const start = async () => {
     const stat = await contract.methods.getStatus().call({ from: accounts[0] });
     setStatus(stat);
-    console.log(status);
-    console.log(stat);
+
+    const ownr = await contract.methods.owner().call({from: accounts[0] });
+    setOwner(ownr);
   };
 
   return (
-    <div className="btns">
-      <button onClick={start}>
-        Start
-      </button>
+    <div className="btns-container">
+      <div className="btns">
+        <button onClick={start}>
+          Start
+        </button>
+      </div>
     </div>
   );
 }

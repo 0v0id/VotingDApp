@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import useEth from "../../contexts/EthContext/useEth";
 
-function RegisteringVotersBtns({status, setStatus}) {
+function RegisteringVotersBtns({setStatus}) {
   const { state: { contract, accounts } } = useEth();
   const [inputValue, setInputValue] = useState("");
 
@@ -31,20 +31,22 @@ function RegisteringVotersBtns({status, setStatus}) {
   };
 
   return (
-    <div className="btns">
-      <div onClick={registerVoter} className="input-btn">
-        registerVoter
-        <input
-          type="text"
-          placeholder="address"
-          value={inputValue}
-          onChange={handleInputChange}
-        />
-      </div>
+    <div className="btns-container">
+      <div className="btns">
+        <div onClick={registerVoter} className="input-btn">
+          registerVoter
+          <input
+            type="text"
+            placeholder="address"
+            value={inputValue}
+            onChange={handleInputChange}
+          />
+        </div>
 
-      <button onClick={nextPhase}>
-        nextPhase
-      </button>
+        <button onClick={nextPhase}>
+          nextPhase
+        </button>
+      </div>
     </div>
   );
 }

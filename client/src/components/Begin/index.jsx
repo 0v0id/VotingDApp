@@ -12,19 +12,17 @@ import NoticeWrongNetwork from "./NoticeWrongNetwork";
 function Begin() {
   const { state } = useEth();
   const [status, setStatus] = useState("");
+  const [owner, setOwner] = useState("");
 
   const begin =
     <>
       {
-        status === "" ? 
-          <div className="btns-container">
-            <BeginBtns status={status} setStatus={setStatus}/>
-          </div> :
-          status === "RegisteringVoters" ? <RegisteringVoters status={status} setStatus={setStatus}/> :
-            status === "ProposalsRegistrationStarted" ? <RegisteringProposals status={status} setStatus={setStatus}/> :
+        status === "" ? <BeginBtns setOwner={setOwner} setStatus={setStatus}/> :
+          status === "RegisteringVoters" ? <RegisteringVoters owner={owner} setStatus={setStatus}/> :
+            status === "ProposalsRegistrationStarted" ? <RegisteringProposals owner={owner} setStatus={setStatus}/> :
               status === "ProposalsRegistrationEnded" || status === "VotingSessionStarted" ? 
-                <VotingSession status={status} setStatus={setStatus}/> :
-                  <Results status={status} setStatus={setStatus}/>
+                <VotingSession owner={owner} status={status} setStatus={setStatus}/> :
+                  <Results owner={owner} status={status} setStatus={setStatus}/>
       }   
     </>;
 

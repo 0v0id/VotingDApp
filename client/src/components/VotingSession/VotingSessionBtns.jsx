@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import useEth from "../../contexts/EthContext/useEth";
 
-function VotingSessionBtns({status, setStatus}) {
+function VotingSessionBtns({owner, status, setStatus}) {
   const { state: { contract, accounts } } = useEth();
   const [inputValue, setInputValue] = useState("");
 
@@ -28,23 +28,29 @@ function VotingSessionBtns({status, setStatus}) {
 
   return (
     <div className="btns">
-      <button onClick={nextPhase}>
-        nextPhase
-      </button>
+      {
+        owner === accounts[0] && status === "ProposalsRegistrationEnded" ? <button onClick={nextPhase}> nextPhase </button> :
+          <></>
+      }
 
-      <div onClick={vote} className="input-btn">
-        vote
-        <input
-          type="text"
-          placeholder="id"
-          value={inputValue}
-          onChange={handleInputChange}
-        />
-      </div>
-
-      <button onClick={nextPhase}>
-        nextPhase
-      </button>
+      {
+        status === "VotingSessionStarted" ?
+        <div onClick={vote} className="input-btn">
+          vote
+          <input
+            type="text"
+            placeholder="id"
+            value={inputValue}
+            onChange={handleInputChange}
+          />
+        </div> :
+          <></>
+      }
+      
+      {
+        status === "VotingSessionStarted" && owner === accounts[0] ? <button onClick={nextPhase}> nextPhase </button> :
+          <></>
+      }
     </div>
   );
 }

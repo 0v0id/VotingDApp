@@ -1,18 +1,20 @@
-import React, { useState } from 'react';
 import useEth from "../../contexts/EthContext/useEth";
 import Title from "./Title";
+import NotOwner from "./NotOwner";
 import RegisteringVotersBtns from "./RegisteringVotersBtns";
 import NoticeNoArtifact from "./NoticeNoArtifact";
 import NoticeWrongNetwork from "./NoticeWrongNetwork";
 
-function RegisteringVoters({status, setStatus}) {
+function RegisteringVoters({owner, setStatus}) {
+  const { state: { accounts } } = useEth();
   const { state } = useEth();
 
   const registeringVoters =
     <>
-      <div className="btns-container">
-        <RegisteringVotersBtns status={status} setStatus={setStatus}/>
-      </div>
+      {
+        owner === accounts[0] ? <RegisteringVotersBtns setStatus={setStatus}/> :
+          <NotOwner />
+      }
     </>;
 
   return (
